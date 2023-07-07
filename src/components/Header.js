@@ -1,8 +1,12 @@
 export const Header = () => {
   return (
-    <header>
-      <h1>Challenge</h1>
-    </header>
+    <nav className="navbar navbar-light bg-light">
+      <div className="container-fluid">
+        <span className="navbar-text">
+          <b>Challenge</b> by Javier Sanhueza
+        </span>
+      </div>
+    </nav>
   );
 }
 
