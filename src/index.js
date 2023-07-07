@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import './bootstrap.js';
+import store from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
