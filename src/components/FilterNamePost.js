@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import { filterPostWithName } from '../redux/postSlice';
+import { fetchPost, filterPostWithName } from '../redux/postSlice';
 
 export const FilterNamePost = () => {
   const [validated, setValidated] = useState(false);
@@ -19,12 +19,18 @@ export const FilterNamePost = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      return;
     }
     event.preventDefault();
     dispatch(filterPostWithName(inputFilter));
     setValidated(true);
   };
+
+  const resetList = () => {
+    dispatch(fetchPost());
+    setInputFilter('');
+    setValidated(false);
+  };
+
   return (
     <Form noValidate validated={validated} onSubmit={onSubmit}>
       <div className="row">
@@ -43,7 +49,8 @@ export const FilterNamePost = () => {
           </Form.Group>
         </div>
         <div className="col-md-6 text-end">
-          <Button type="submit">Buscar</Button>
+          <Button variant="outline-primary" type="submit">Buscar</Button>
+          <Button onClick={() => resetList()} variant="outline-warning" className="ms-2">Reset</Button>
         </div>
       </div>
     </Form>

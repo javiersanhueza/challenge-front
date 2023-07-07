@@ -1,28 +1,32 @@
 import { useDispatch } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
-import { deletePostState } from '../redux/postSlice';
+import { deletePost } from '../redux/postSlice';
 
 export const PostRow = ({
   post
 }) => {
   const dispatch = useDispatch();
 
-  const deletePost = (idPost) => {
-    dispatch(deletePostState(idPost));
+  const deleteElement = (idPost) => {
+    dispatch(deletePost(idPost));
   }
   return (
-    <tr>
-      <td>{ post.name }</td>
-      <td>{ post.description }</td>
-      <td className="text-center">
-        <button
-          className="btn btn-outline-danger btn-sm"
-          onClick={() => deletePost(post.id)}
-        >
-          Eliminar
-        </button>
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>{ post.name }</td>
+        <td>{ post.description }</td>
+        <td className="text-center">
+          <Button
+            className="btn-sm"
+            variant="outline-danger"
+            onClick={() => deleteElement(post.id)}
+          >
+            Eliminar
+          </Button>
+        </td>
+      </tr>
+    </>
   );
 }
 

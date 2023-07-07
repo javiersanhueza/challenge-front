@@ -5,7 +5,6 @@ import PostRow from './PostRow';
 export const TablePost = () => {
   const posts = useSelector((state) => state.posts.list) || [];
 
-  console.log(posts);
   return (
     <>
       <table className="table table-striped table-hover">
@@ -23,6 +22,11 @@ export const TablePost = () => {
             post={post}
           />
         ))}
+        {!posts.length && (
+          <tr>
+            <td className="text-center" colSpan="3">Ningún dato disponible en esta tabla</td>
+          </tr>
+        )}
         </tbody>
       </table>
     </>
